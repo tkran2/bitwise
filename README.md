@@ -74,6 +74,7 @@ mismatched sampler and trainer log-probabilities in RL.
 | Matches the reference implementation | logits vs Hugging Face transformers (fp32) on real prompts, Qwen2 and Llama architectures | max abs difference 2.2e-4 on logits up to ±29; 100% top-1 agreement |
 | Real weights keep the guarantee | Qwen2.5-0.5B, 8 chat requests with a shared system prompt under continuous batching with preemption and prefix hits | identical tokens and logit fingerprints to running each alone |
 | Greedy speculative decoding is lossless in bits | SmolLM2-135M drafting for SmolLM2-360M | identical tokens and logit fingerprints to plain decoding |
+| Memory safety | unit tests and 400 simulator traces built with AddressSanitizer and UBSan (`-DBITWISE_SANITIZE=ON`) | clean |
 
 ### The simulator caught every injected bug, and one real one
 

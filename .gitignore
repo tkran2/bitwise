@@ -4,3 +4,4 @@ __pycache__/
 *.bw
 models/
 .pytest_cache/
+build-asan/
