@@ -1,0 +1,21 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "requests": 16,
+  "max_new_tokens": 64,
+  "transformers": {
+    "first_token_logits_differ": 16,
+    "outputs_changed": 0,
+    "divergence_positions": [],
+    "seconds": 1610.5415337085724
+  },
+  "bitwise_invariant": {
+    "logits_fingerprints_differ": 0,
+    "outputs_changed": 0,
+    "divergence_positions": []
+  },
+  "bitwise_shape_specialized": {
+    "logits_fingerprints_differ": 16,
+    "outputs_changed": 0,
+    "divergence_positions": []
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "runs": [
+    {
+      "target": "SmolLM2-360M-Instruct",
+      "draft": "SmolLM2-135M-Instruct",
+      "k": 0,
+      "tokens": 432,
+      "tok_s": 31.14000551258423,
+      "acceptance": null,
+      "bit_identical_to_k0": true
+    },
+    {
+      "target": "SmolLM2-360M-Instruct",
+      "draft": "SmolLM2-135M-Instruct",
+      "k": 2,
+      "tokens": 432,
+      "tok_s": 26.21050520690133,
+      "acceptance": 0.662125340599455,
+      "bit_identical_to_k0": true
+    },
+    {
+      "target": "SmolLM2-360M-Instruct",
+      "draft": "SmolLM2-135M-Instruct",
+      "k": 4,
+      "tokens": 432,
+      "tok_s": 23.069001107069035,
+      "acceptance": 0.4794520547945205,
+      "bit_identical_to_k0": true
+    },
+    {
+      "target": "SmolLM2-360M-Instruct",
+      "draft": "SmolLM2-135M-Instruct",
+      "k": 6,
+      "tokens": 432,
+      "tok_s": 19.150042638278954,
+      "acceptance": 0.37755102040816324,
+      "bit_identical_to_k0": true
+    },
+    {
+      "target": "SmolLM2-1.7B-Instruct",
+      "draft": "SmolLM2-135M-Instruct",
+      "k": 0,
+      "tokens": 467,
+      "tok_s": 7.264485115376692,
+      "acceptance": null,
+      "bit_identical_to_k0": true
+    },
+    {
+      "target": "SmolLM2-1.7B-Instruct",
+      "draft": "SmolLM2-135M-Instruct",
+      "k": 2,
+      "tokens": 467,
+      "tok_s": 7.633779997328407,
+      "acceptance": 0.5681293302540416,
+      "bit_identical_to_k0": true
+    },
+    {
+      "target": "SmolLM2-1.7B-Instruct",
+      "draft": "SmolLM2-135M-Instruct",
+      "k": 4,
+      "tokens": 467,
+      "tok_s": 7.058201290842173,
+      "acceptance": 0.42212518195050946,
+      "bit_identical_to_k0": true
+    },
+    {
+      "target": "SmolLM2-1.7B-Instruct",
+      "draft": "SmolLM2-135M-Instruct",
+      "k": 6,
+      "tokens": 467,
+      "tok_s": 5.827294758853229,
+      "acceptance": 0.31524008350730687,
+      "bit_identical_to_k0": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "batch": 1,
+  "transformers_fp32_tok_s": 12.91158486599138,
+  "bitwise_tok_s": 28.97642698329175
+}
