@@ -145,19 +145,17 @@ void test_attention_invariance() {
   const int q_stride = heads * L.head_dim;
   std::vector<int> positions = {0, 5, 17, 300, 301, 302, 511};
   auto q = randvec(positions.size() * q_stride, rng);
-  std::vector<std::vector<float>> scratch;
   for (KernelMode mode : {KernelMode::Invariant, KernelMode::ShapeSpecialized}) {
     ThreadPool pool(4);
     std::vector<AttentionRow> rows;
     for (int p : positions) rows.push_back({p, table.data()});
     std::vector<float> batch(positions.size() * q_stride), one(q_stride);
-    paged_attention(q.data(), q_stride, rows, kc.data(), vc.data(), L, heads, batch.data(), q_stride, pool, mode,
-                    scratch);
+    paged_attention(q.data(), q_stride, rows, kc.data(), vc.data(), L, heads, batch.data(), q_stride, pool, mode);
     int mismatches = 0;
     for (std::size_t r = 0; r < positions.size(); ++r) {
       std::vector<AttentionRow> solo = {rows[r]};
       paged_attention(q.data() + r * q_stride, q_stride, solo, kc.data(), vc.data(), L, heads, one.data(), q_stride,
-                      pool, mode, scratch);
+                      pool, mode);
       mismatches += !same_bits(one.data(), batch.data() + r * q_stride, q_stride);
     }
     if (mode == KernelMode::Invariant)

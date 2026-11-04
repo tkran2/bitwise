@@ -295,7 +295,7 @@ const float* Runner::forward(const std::vector<BatchRow>& rows, int* num_logit_r
         std::memcpy(vc + L.offset(blk, h, slot), v + h * c.head_dim, c.head_dim * sizeof(float));
       }
     }
-    paged_attention(qkv_.data(), QKV, att, kc, vc, L, c.heads, attn_.data(), QD, pool_, mode_, scratch_);
+    paged_attention(qkv_.data(), QKV, att, kc, vc, L, c.heads, attn_.data(), QD, pool_, mode_);
     matmul(attn_.data(), n, w.o, nullptr, proj_.data(), pool_, mode_);
     for (std::size_t i = 0; i < static_cast<std::size_t>(n) * H; ++i) x_[i] += proj_[i];
     rmsnorm(x_.data(), w.mlp_norm.data(), xn_.data(), n, H, c.rms_eps);

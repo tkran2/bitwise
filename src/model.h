@@ -103,7 +103,6 @@ class Runner {
   KernelMode mode_;
   int capacity_ = 0;
   std::vector<float> x_, xn_, qkv_, attn_, proj_, gate_up_, mlp_h_, logits_, last_;
-  std::vector<std::vector<float>> scratch_;
 };
 
 }  // namespace bw

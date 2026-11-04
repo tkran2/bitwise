@@ -341,7 +341,7 @@ Partial attend_range(const float* qh, const AttentionRow& row, int kvh, int begi
 
 void paged_attention(const float* q, int q_stride, const std::vector<AttentionRow>& rows, const float* k_cache,
                      const float* v_cache, const KVLayout& L, int heads, float* out, int out_stride,
-                     ThreadPool& pool, KernelMode mode, std::vector<std::vector<float>>& /*scratch*/) {
+                     ThreadPool& pool, KernelMode mode) {
   const int hd = L.head_dim;
   const int group = heads / L.kv_heads;
   const float scale = 1.0f / std::sqrt(static_cast<float>(hd));

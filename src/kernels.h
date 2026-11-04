@@ -110,6 +110,6 @@ struct AttentionRow {
 // out[r][h*hd..] = softmax(q k^T / sqrt(hd)) v over keys 0..pos of row r's sequence.
 void paged_attention(const float* q, int q_stride, const std::vector<AttentionRow>& rows, const float* k_cache,
                      const float* v_cache, const KVLayout& layout, int heads, float* out, int out_stride,
-                     ThreadPool& pool, KernelMode mode, std::vector<std::vector<float>>& scratch);
+                     ThreadPool& pool, KernelMode mode);
 
 }  // namespace bw
