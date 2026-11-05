@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        kernels: [portable, native]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: |
+          avx=OFF
+          if [ "${{ matrix.kernels }}" = native ] && grep -q avx512f /proc/cpuinfo; then avx=ON; fi
+          echo "AVX-512 kernels: $avx"
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBITWISE_AVX512=$avx
+      - name: Build
+        run: cmake --build build -j --target bitwise_tests bitwise_sim
+      - name: Unit tests
+        run: ./build/bitwise_tests
+      - name: Schedule-invariance simulator
+        run: ./build/bitwise_sim --traces 300
+
+  sanitizers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build with AddressSanitizer and UBSan
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBITWISE_SANITIZE=ON -DBITWISE_AVX512=OFF
+          cmake --build build -j --target bitwise_tests bitwise_sim
+      - name: Tests and simulator under sanitizers
+        run: |
+          ./build/bitwise_tests
+          ./build/bitwise_sim --traces 100

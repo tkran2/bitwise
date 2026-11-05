@@ -1,5 +1,7 @@
 # Bitwise
 
+[![CI](https://github.com/tkran2/bitwise/actions/workflows/ci.yml/badge.svg)](https://github.com/tkran2/bitwise/actions/workflows/ci.yml)
+
 An LLM inference engine in C++20 whose outputs are **bit-for-bit independent of how
 requests are scheduled**. A request produces the same tokens, from the same logits
 down to the last float bit, whether it ran alone or in a crowded batch, was chunked,
