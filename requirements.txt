@@ -1,0 +1,8 @@
+numpy
+pybind11
+huggingface_hub
+tokenizers
+transformers
+torch
+pytest
+matplotlib
