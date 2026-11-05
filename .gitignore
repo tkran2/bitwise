@@ -5,3 +5,4 @@ __pycache__/
 models/
 .pytest_cache/
 build-asan/
+build-scalar/

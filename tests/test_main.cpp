@@ -111,8 +111,11 @@ void test_matmul_row_invariance() {
     }
     if (mode == KernelMode::Invariant)
       CHECK(mismatches == 0);
+#if defined(__AVX512F__)
     else
       CHECK(mismatches > 0);  // the shape-specialized path really does change numerics
+#endif
+    // The portable scalar build has a single matmul path, so both modes agree there.
   }
 }
 
