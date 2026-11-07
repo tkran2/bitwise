@@ -173,7 +173,7 @@ cmake -S . -B build && cmake --build build -j
 ./build/bitwise_sim --traces 2000          # randomized schedule-invariance check
 ./build/bitwise_sim --sweep-faults --traces 400
 
-pip install numpy pybind11 huggingface_hub tokenizers transformers torch
+pip install -r requirements.txt
 python tools/convert.py Qwen/Qwen2.5-0.5B-Instruct models/qwen2.5-0.5b-instruct.bw
 PYTHONPATH=python python -m pytest python/tests     # real checkpoints vs transformers
 cd bench && PYTHONPATH=../python python loadgen.py kernels hf scheduling prefix spec
