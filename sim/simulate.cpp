@@ -242,8 +242,22 @@ int main(int argc, char** argv) {
     else if (a == "--trace") opt.only_trace = std::stoi(next());
     else if (a == "--model") opt.model_path = next();
     else if (a == "--draft") opt.draft_path = next();
+    else if (a == "--help" || a == "-h") {
+      std::printf(
+          "usage: bitwise_sim [options]\n"
+          "  --traces N        randomized workloads to run (default 500)\n"
+          "  --seed S          base seed (default 1)\n"
+          "  --kernels MODE    invariant (default) or shape\n"
+          "  --fault F         inject test-only fault F (1-5)\n"
+          "  --sweep-faults    run clean, every fault, and shape kernels; report which are caught\n"
+          "  --trace N         run only trace N, with --verbose for engine state on failure\n"
+          "  --verbose         print each violation\n"
+          "  --model PATH      use a converted checkpoint instead of the random test model\n"
+          "  --draft PATH      draft checkpoint for speculative decoding (default: --model)\n");
+      return 0;
+    }
     else {
-      std::fprintf(stderr, "unknown option %s\n", a.c_str());
+      std::fprintf(stderr, "unknown option %s (see --help)\n", a.c_str());
       return 2;
     }
   }
